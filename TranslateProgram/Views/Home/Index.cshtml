@@ -1,0 +1,92 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@*<div class="text-center">
+    <h1 class="display-4">Translate</h1>
+   
+</div>*@
+<style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      label {
+        font-weight: bold;
+      }
+      select {
+        margin-bottom: 10px;
+      }
+      textarea {
+        width: 100%;
+        height: 150px;
+        margin-bottom: 10px;
+      }
+      button {
+        font-weight: bold;
+        padding: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      #translation {
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 10px;
+      }
+    </style>
+ 
+ <body>
+    <h1>Translator</h1>
+   
+    <input type="radio" name="form" onclick="toggleForm('form1')">Текст
+    <input type="radio" name="form" onclick="toggleForm('form2')">Картинка
+
+    <form id="form1" method="post" asp-action="Translated">
+      <label for="source-lang">Source language:</label>
+      <select id="source-lang">
+        <option value="en">English</option>
+      </select>
+      <label for="target-lang">Target language:</label>
+      <select name="targetlang" >
+        <option value="uk">Український</option>
+        <option value="ru">Свинятський</option>
+        <option value="de">German</option>
+      </select>
+      <label for="source-text">Source text:</label>
+      <textarea name="sourcetext"  ></textarea>
+      <button type="submit" id="translate-btn">Translate</button>
+      <br />
+      <textarea  >@ViewBag.Text</textarea>
+    </form>
+
+
+     
+    <form id="form2" method="post" asp-action="ImageAnalis">
+        <select id="source-lang">
+        <option value="en">English</option>
+      </select>
+      <select name="targetlang1" >
+        <option value="uk">Український</option>
+        <option value="ru">Свинятський</option>
+        <option value="de">German</option>
+      </select>
+        <label for="source-text">Source text:</label>
+        <textarea name="textimage"  ></textarea>
+        <button  type="submit" id="btn">Image</button>
+        <label for="complete-text">Translated text:</label>
+        <textarea  >@ViewBag.TextAnalisis</textarea>
+   </form>
+
+
+
+    </body>
+
+   <script>
+       function toggleForm(formId) {
+            document.getElementById('form1').style.display = 'none';
+            document.getElementById('form2').style.display = 'none';
+            document.getElementById(formId).style.display = 'block';
+            }
+   </script>
